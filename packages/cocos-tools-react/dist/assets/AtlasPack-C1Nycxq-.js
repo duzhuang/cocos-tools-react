@@ -1,0 +1,1 @@
+import{t as e}from"./index-BbAbw6Yn.js";var t=e();function n(){return(0,t.jsxs)(`div`,{className:`tool-panel`,children:[(0,t.jsx)(`h2`,{children:`图集打包`}),(0,t.jsx)(`p`,{children:`这里放「图集打包」的具体实现。当前是占位示例，替换本组件即可。`}),(0,t.jsx)(`button`,{className:`btn primary`,children:`扫描资源`})]})}export{n as default};

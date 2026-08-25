@@ -1,0 +1,37 @@
+{
+    "name": "cocos-tools-react",
+    "version": "1.0.0",
+    "description": "cocos工具包",
+    "author": "wanba",
+    "main": "cocos/index.js",
+    "panel": {
+        "title": "工具包",
+        "type": "simple",
+        "main": "dist/index.html",
+        "min-width": 1000,
+        "min-height": 600
+    },
+    "main-menu": {
+        "cocos工具包/GeneralTools": {
+            "message": "cocos-tools-react:openReactPanel"
+        }
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "devDependencies": {
+        "@vitejs/plugin-react": "^6.1.0",
+        "vite": "^8.2.2"
+    },
+    "dependencies": {
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8"
+    }
+}
