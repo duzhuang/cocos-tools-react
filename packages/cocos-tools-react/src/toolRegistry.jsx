@@ -44,4 +44,12 @@ export const toolRegistry = [
         group: '构建',
         load: () => import('./tools/AdbPush'),
     },
+    {
+        id: '资源统计',
+        title: '资源统计',
+        description: '统计项目资源。',
+        icon: ImageIcon,
+        group: '资源处理',
+        load: () => import('./tools/ResourceStatistics'),
+    }
 ];

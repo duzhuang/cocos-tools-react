@@ -1,0 +1,1 @@
+var e=new class{constructor(e=Editor){this.m_editor=e}sendToMain(e,...t){if(!this.m_editor||!this.m_editor.Ipc)throw Error(`[CocosIpcAdapter] Editor.Ipc is not available.`);return this.m_editor.Ipc.sendToMain(e,...t)}};export{e as t};
