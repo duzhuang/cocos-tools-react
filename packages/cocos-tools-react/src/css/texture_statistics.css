@@ -1,0 +1,82 @@
+@import './theme.css';
+
+.texture_statistics_body {
+    font-family: var(--font);
+    font-size: 13px;
+    background-color: var(--bg-panel);
+    box-sizing: border-box;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+/* --- 1. 顶部概览卡片 (Stats) --- */
+
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.stats-card {
+    background: #2d2d30;
+    border-radius: 6px;
+    flex: 1;
+    max-width: 200px;
+    border: 1px solid #3e3e42;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px;
+}
+
+
+.stat-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-card .value {
+    font-size: 50px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.stat-card .sub {
+    font-size: 12px;
+    color: #adadad;
+    margin-top: 4px;
+}
+
+.stat-card .sub span {
+    background: #3e3e42;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 6px;
+}
+
+/* --- 2. 工具栏 (Toolbar) --- */
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+
+/* --- 3. 表格容器 --- */
+.table-wrapper {
+    flex: 1;
+    overflow: auto;
+    border-radius: 6px;
+    border: 1px solid #3e3e42;
+    background: #252526;
+}

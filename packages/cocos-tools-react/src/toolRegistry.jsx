@@ -51,5 +51,13 @@ export const toolRegistry = [
         icon: ImageIcon,
         group: '资源处理',
         load: () => import('./tools/ResourceStatistics'),
-    }
+    },
+    {
+        id: '纹理统计',
+        title: '纹理统计',
+        description: '统计项目纹理。',
+        icon: ImageIcon,
+        group: '资源处理',
+        load: () => import('./tools/TextureStatistics'),
+    },
 ];

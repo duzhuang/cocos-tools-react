@@ -1,1 +1,0 @@
-import{t as e}from"./index-BQAeoxHA.js";var t=e();function n(){return(0,t.jsxs)(`div`,{className:`tool-panel`,children:[(0,t.jsx)(`h2`,{children:`Bundle 审计`}),(0,t.jsx)(`p`,{children:`分析 Asset Bundle 依赖与体积的实现放这里。`}),(0,t.jsx)(`button`,{className:`btn primary`,children:`开始分析`})]})}export{n as default};
