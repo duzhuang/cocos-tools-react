@@ -33,43 +33,6 @@ const loadFileStat = function (event, data) {
 }
 
 
-// 开发模式下监听 React 自动进行重载
-const reloadReactPanel = function () {      
-    const myPackagePath = path.join(Editor.Project.path, 'packages/cocos-tools-react');    
-    // ✨ 开发模式下启动自动监听重载
-    const distPath = path.join(myPackagePath, 'dist');
-    
-    if(!fs.existsSync(distPath)) {
-        return;
-    }
-
-    const antiShakeTime = 2000;
-    
-    fileWatcher = fs.watch(distPath, { recursive: true }, (eventType, filename) => {
-
-        logger.log(`文件监听到事件: ${eventType}, 文件: ${filename}`);
-
-        // 只要 dist 目录下的 js 或 css 发生改变
-        if (filename && (filename.endsWith('.js') || filename.endsWith('.css'))) {
-            clearTimeout(reloadTimer);
-            // 防抖处理：等待 Vite 完全写入文件后触发
-            reloadTimer = setTimeout(() => {              
-                let win = Editor.Panel.findWindow('cocos-tools-react');
-                // 2. 检查 nativeWin 及其 webContents 是否存在
-                if (win && win.nativeWin && win.nativeWin.webContents) {
-                    logger.log('⚡ 检测到面板处于打开状态，正在强制刷新 React 渲染页面...');
-                    // 🚀 核心：直接调用 Electron 原生的 reload 方法，等同于在面板里按了 Ctrl + R
-                    win.nativeWin.webContents.reload();
-                    logger.log('✅ React 页面刷新成功！');
-                } else {
-                    logger.log('💡 面板当前未打开，无需刷新界面。下次打开时会自动应用新代码。');
-                }
-            }, antiShakeTime);
-        }
-    });
-}
-
-
 module.exports = {
 
     load() {        
@@ -91,7 +54,8 @@ module.exports = {
     unload() {
         Editor.log('构建资源包工具卸载');
         ipcAdapter.ipcMainOff('cocos-tools-react:wanBaBuild', buildWanBaPackage);
-        ipcAdapter.ipcMainOff('cocos-tools-react:pushGameToDevice', pushGameToDevice);       
+        ipcAdapter.ipcMainOff('cocos-tools-react:pushGameToDevice', pushGameToDevice);  
+        ipcAdapter.ipcMainOff('cocos-tools-react:fs-stat', loadFileStat);     
     },
 
     messages: {

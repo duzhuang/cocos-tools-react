@@ -1,5 +1,5 @@
 import { n as __toESM } from "./rolldown-runtime-BPOCksWG.js";
-import { n as require_react, t as require_jsx_runtime } from "./index-r7aNocDy.js";
+import { n as require_react, t as require_jsx_runtime } from "./index-vS-xnELP.js";
 import { t as EditorService_default } from "./EditorService-ptYj2fsN.js";
 import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-DfpbYn1L.js";
 import { t as require_path } from "./path-Ce5-mKfc.js";
@@ -11,9 +11,12 @@ var import_path = /* @__PURE__ */ __toESM(require_path());
 var import_jsx_runtime = require_jsx_runtime();
 function TextureStatistics() {
 	const [textureList, setTextureList] = (0, import_react.useState)([]);
+	const [displayList, setDisplayList] = (0, import_react.useState)([]);
 	const [totalSize, setTotalSize] = (0, import_react.useState)(0);
 	const [totalMemorySize, setTotalMemorySize] = (0, import_react.useState)(0);
 	const [maxMemorySize, setMaxMemorySize] = (0, import_react.useState)(0);
+	const [inputValue, setInputValue] = (0, import_react.useState)("");
+	const [isAll, setIsAll] = (0, import_react.useState)(true);
 	const formateSize = (bytes) => {
 		if (bytes === 0 || !bytes) return "0 B";
 		const k = 1024;
@@ -61,6 +64,7 @@ function TextureStatistics() {
 		setTextureList(textureInfo);
 		const maxMem = Math.max(...textureInfo.map((item) => item.memorySize), 1048576);
 		setMaxMemorySize(maxMem);
+		setDisplayList(textureInfo);
 	}, []);
 	const sortedTextureList = () => {
 		return [...textureList].sort((a, b) => {
@@ -71,6 +75,22 @@ function TextureStatistics() {
 		return [...textureList].sort((a, b) => {
 			return b.memorySize - a.memorySize;
 		});
+	};
+	const handleFilter = (keyword) => {
+		if (!keyword) {
+			setIsAll(true);
+			setDisplayList(textureList);
+		} else {
+			const filtered = textureList.filter((item) => item.uuid == keyword);
+			console.log(filtered);
+			if (filtered.length == 0) {
+				setIsAll(true);
+				setDisplayList(textureList);
+			} else {
+				setIsAll(false);
+				setDisplayList(filtered);
+			}
+		}
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "texture_statistics_body",
@@ -118,11 +138,23 @@ function TextureStatistics() {
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 							className: "search-input",
 							type: "text",
-							placeholder: "搜索纹理名称或路径...",
-							onInput: (e) => {
-								console.log(e.target.value);
+							placeholder: "搜索纹理名称或uuid...",
+							value: inputValue,
+							onChange: (e) => {
+								setInputValue(e.target.value);
+							},
+							onKeyDown: (e) => {
+								if (e.key === "Enter") handleFilter(inputValue);
 							}
 						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "btn primary",
+						onClick: () => {
+							if (isAll) handleFilter(inputValue);
+							else handleFilter("");
+						},
+						children: isAll ? "搜索" : "全部"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						className: "btn primary",
@@ -170,7 +202,7 @@ function TextureStatistics() {
 								children: "内存占用"
 							})
 						] })
-					}), textureList.length > 0 && textureList.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
+					}), displayList.length > 0 && displayList.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 							className: "table-cell",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
