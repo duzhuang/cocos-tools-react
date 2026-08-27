@@ -75,10 +75,9 @@ var EditorService = class {
 	}
 	/**
 	* 查询资源详细信息
-	* @param {string} uuid - 资源的唯一标识符
-	* @returns {Promise<object>} - 包含资源详细信息的对象
+	* @param {string} uuid - 资源的唯一标识符 
 	*/
-	queryInfoByUuidAsync(uuid) {
+	queryInfoByUuidSync(uuid) {
 		const assetdb = this._validateAssetdb();
 		if (!assetdb) return;
 		if (!uuid) {
@@ -86,6 +85,19 @@ var EditorService = class {
 			return;
 		}
 		return assetdb.assetInfoByUuid(uuid);
+	}
+	/**
+	* 查询资源元数据
+	* @param {string} uuid - 资源的唯一标识符 
+	*/
+	queryMetaByUuidSync(uuid) {
+		const assetdb = this._validateAssetdb();
+		if (!assetdb) return;
+		if (!uuid) {
+			console.warn("[EditorService] uuid is required.");
+			return;
+		}
+		return assetdb.loadMetaByUuid(uuid);
 	}
 };
 var EditorService_default = new EditorService(() => window?.Editor);

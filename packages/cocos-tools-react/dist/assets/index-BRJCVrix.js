@@ -1,27 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./WanBaBuild-BZt4D-Qg.js","./EditorService-bxMGRVsV.js","./CocosIpcAdapter-BmqNCe2O.js","./AdbPush-C688jfxS.js","./ResourceStatistics-BaCHDoxs.js","./TextureStatistics--s84gZ3t.js","./TextureStatistics-CP9m9pUn.css"])))=>i.map(i=>d[i]);
-//#region \0rolldown/runtime.js
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __copyProps = (to, from, except, desc) => {
-	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
-		key = keys[i];
-		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
-			get: ((k) => from[k]).bind(null, key),
-			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
-		});
-	}
-	return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
-	value: mod,
-	enumerable: true
-}) : target, mod));
-//#endregion
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./WanBaBuild-B4v0jTeJ.js","./rolldown-runtime-BPOCksWG.js","./EditorService-ptYj2fsN.js","./CocosIpcAdapter-BmqNCe2O.js","./AdbPush-rOZslCvh.js","./ResourceStatistics-DSTGbkzI.js","./path-Ce5-mKfc.js","./TextureStatistics-CnlFxhh5.js","./TextureStatistics-ITfKCdio.css"])))=>i.map(i=>d[i]);
+import { n as __toESM, t as __commonJSMin } from "./rolldown-runtime-BPOCksWG.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -10552,7 +10530,7 @@ var toolRegistry = [
 		description: "扫描资源，生成图集打包配置文件。",
 		icon: LayersIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./AtlasPack-BxRJadVk.js"), [], import.meta.url)
+		load: () => __vitePreload(() => import("./AtlasPack-DnhsBGhv.js"), [], import.meta.url)
 	},
 	{
 		id: "bundle-audit",
@@ -10560,7 +10538,7 @@ var toolRegistry = [
 		description: "分析 Asset Bundle 依赖与体积",
 		icon: BoxIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./BundleAudit-D7HQ7N0Z.js"), [], import.meta.url)
+		load: () => __vitePreload(() => import("./BundleAudit-Cbyi3hnw.js"), [], import.meta.url)
 	},
 	{
 		id: "wanbaBuild",
@@ -10568,7 +10546,7 @@ var toolRegistry = [
 		description: "构建项目，生成玩吧游戏资源包。",
 		icon: PackageIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./WanBaBuild-BZt4D-Qg.js"), __vite__mapDeps([0,1,2]), import.meta.url)
+		load: () => __vitePreload(() => import("./WanBaBuild-B4v0jTeJ.js"), __vite__mapDeps([0,1,2,3]), import.meta.url)
 	},
 	{
 		id: "adbPush",
@@ -10576,7 +10554,7 @@ var toolRegistry = [
 		description: "将文件上传到 Android 设备。",
 		icon: AdbPhoneIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./AdbPush-C688jfxS.js"), __vite__mapDeps([3,1,2]), import.meta.url)
+		load: () => __vitePreload(() => import("./AdbPush-rOZslCvh.js"), __vite__mapDeps([4,1,2,3]), import.meta.url)
 	},
 	{
 		id: "资源统计",
@@ -10584,7 +10562,7 @@ var toolRegistry = [
 		description: "统计项目资源。",
 		icon: ImageIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./ResourceStatistics-BaCHDoxs.js"), __vite__mapDeps([4,1]), import.meta.url)
+		load: () => __vitePreload(() => import("./ResourceStatistics-DSTGbkzI.js"), __vite__mapDeps([5,1,2,6]), import.meta.url)
 	},
 	{
 		id: "纹理统计",
@@ -10592,7 +10570,7 @@ var toolRegistry = [
 		description: "统计项目纹理。",
 		icon: ImageIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./TextureStatistics--s84gZ3t.js"), __vite__mapDeps([5,6]), import.meta.url)
+		load: () => __vitePreload(() => import("./TextureStatistics-CnlFxhh5.js"), __vite__mapDeps([7,1,2,3,6,8]), import.meta.url)
 	}
 ];
 //#endregion
@@ -10714,4 +10692,4 @@ function App() {
 var container = document.getElementById("app");
 import_client.createRoot(container).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, {}));
 //#endregion
-export { __toESM as i, require_react as n, __commonJSMin as r, require_jsx_runtime as t };
+export { require_react as n, require_jsx_runtime as t };

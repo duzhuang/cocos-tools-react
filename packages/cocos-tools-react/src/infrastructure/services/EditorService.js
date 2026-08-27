@@ -101,10 +101,9 @@ class EditorService {
 
     /**
      * 查询资源详细信息
-     * @param {string} uuid - 资源的唯一标识符
-     * @returns {Promise<object>} - 包含资源详细信息的对象
+     * @param {string} uuid - 资源的唯一标识符 
      */
-    queryInfoByUuidAsync(uuid) {       
+    queryInfoByUuidSync(uuid) {       
         const assetdb = this._validateAssetdb();
         if (!assetdb) {
             return;
@@ -117,6 +116,25 @@ class EditorService {
 
         const info = assetdb.assetInfoByUuid(uuid);
         return info;
+    }
+
+    /**
+     * 查询资源元数据
+     * @param {string} uuid - 资源的唯一标识符 
+     */
+    queryMetaByUuidSync(uuid) {
+        const assetdb = this._validateAssetdb();
+        if (!assetdb) {
+            return;
+        }
+
+        if (!uuid) {
+            console.warn('[EditorService] uuid is required.');
+            return;
+        }
+
+        const meta = assetdb.loadMetaByUuid(uuid);
+        return meta;
     }
 }
 
