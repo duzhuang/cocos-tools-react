@@ -23,12 +23,14 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "watch": "vite build --watch" 
+        "watch": "vite build --watch",
+        "zip": "npm run build && node ./scripts/bundle-plugin.js"
     },
     "keywords": [],
     "license": "ISC",
     "devDependencies": {
         "@vitejs/plugin-react": "^6.1.0",
+        "archiver": "^8.0.0",
         "vite": "^8.2.2"
     },
     "dependencies": {
