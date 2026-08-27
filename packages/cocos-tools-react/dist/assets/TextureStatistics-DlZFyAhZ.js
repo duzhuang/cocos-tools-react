@@ -1,7 +1,7 @@
 import { n as __toESM } from "./rolldown-runtime-BPOCksWG.js";
-import { n as require_react, t as require_jsx_runtime } from "./index-BRJCVrix.js";
+import { n as require_react, t as require_jsx_runtime } from "./index-r7aNocDy.js";
 import { t as EditorService_default } from "./EditorService-ptYj2fsN.js";
-import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-BmqNCe2O.js";
+import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-DfpbYn1L.js";
 import { t as require_path } from "./path-Ce5-mKfc.js";
 //#region src/css/texture_statistics.css
 var import_react = /* @__PURE__ */ __toESM(require_react());
@@ -36,12 +36,12 @@ function TextureStatistics() {
 		return "danger";
 	};
 	(0, import_react.useEffect)(async () => {
-		const textureInfo = (await EditorService_default.queryAssetsByAssetTypeAsync("cc.Texture2D")).map((item) => {
+		const res = await EditorService_default.queryAssetsByAssetTypeAsync("cc.Texture2D");
+		const textureInfo = await Promise.all(res.map(async (item) => {
 			const info = EditorService_default.queryInfoByUuidSync(item.uuid);
 			const meta = EditorService_default.queryMetaByUuidSync(item.uuid);
-			CocosIpcAdapter_default.sendToMain("cocos-tools-react:fs-stat", { item }, (event, data) => {
-				item.size = data.size;
-			});
+			const [resItem] = await CocosIpcAdapter_default.sendToMainASync("cocos-tools-react:fs-stat", { item });
+			item.size = resItem.size;
 			const memorySize = meta.width * meta.height * 4;
 			return {
 				...info,
@@ -49,7 +49,7 @@ function TextureStatistics() {
 				...item,
 				memorySize
 			};
-		});
+		}));
 		let totalSize = 0;
 		let totalMemorySize = 0;
 		textureInfo.forEach((item) => {
@@ -62,6 +62,16 @@ function TextureStatistics() {
 		const maxMem = Math.max(...textureInfo.map((item) => item.memorySize), 1048576);
 		setMaxMemorySize(maxMem);
 	}, []);
+	const sortedTextureList = () => {
+		return [...textureList].sort((a, b) => {
+			return b.size - a.size;
+		});
+	};
+	const sortedTextureListByMemory = () => {
+		return [...textureList].sort((a, b) => {
+			return b.memorySize - a.memorySize;
+		});
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "texture_statistics_body",
 		children: [
@@ -118,6 +128,7 @@ function TextureStatistics() {
 						className: "btn primary",
 						onClick: () => {
 							console.log("按尺寸排序");
+							setTextureList(sortedTextureList());
 						},
 						children: "按尺寸排序"
 					}),
@@ -125,6 +136,7 @@ function TextureStatistics() {
 						className: "btn primary",
 						onClick: () => {
 							console.log("按内存排序");
+							setTextureList(sortedTextureListByMemory());
 						},
 						children: "按内存排序"
 					})
@@ -150,7 +162,7 @@ function TextureStatistics() {
 								children: "uuid"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								style: { width: "80px" },
+								style: { width: "100px" },
 								children: "大小"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
@@ -168,7 +180,7 @@ function TextureStatistics() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", { children: import_path.default.basename(item.path) }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", { children: item.uuid }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", { children: item.size }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", { children: formateSize(item.size) }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "memory-cell",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: formateSize(item.memorySize) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {

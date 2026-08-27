@@ -17,6 +17,18 @@ var CocosIpcAdapter = class {
 		if (!this.m_editor || !this.m_editor.Ipc) throw new Error("[CocosIpcAdapter] Editor.Ipc is not available.");
 		return this.m_editor.Ipc.sendToMain(message, ...args);
 	}
+	sendToMainASync(message, ...args) {
+		if (!this.m_editor || !this.m_editor.Ipc) throw new Error("[CocosIpcAdapter] Editor.Ipc is not available.");
+		return new Promise((resolve, reject) => {
+			this.m_editor.Ipc.sendToMain(message, ...args, (err, ...replyArgs) => {
+				if (err) {
+					if (err.code === "ETIMEOUT") console.error(`Timeout for ipc message ${message}`);
+					return reject(err);
+				}
+				resolve(replyArgs);
+			});
+		});
+	}
 };
 var CocosIpcAdapter_default = new CocosIpcAdapter();
 //#endregion

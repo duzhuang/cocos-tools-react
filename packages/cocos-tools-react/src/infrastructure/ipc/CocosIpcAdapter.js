@@ -21,6 +21,26 @@ class CocosIpcAdapter {
         return this.m_editor.Ipc.sendToMain(message, ...args);
     }
 
+    sendToMainASync(message, ...args) {
+        if (!this.m_editor || !this.m_editor.Ipc) {
+            throw new Error('[CocosIpcAdapter] Editor.Ipc is not available.');
+        }
+
+        return new Promise((resolve, reject) => {
+            this.m_editor.Ipc.sendToMain(message, ...args, (err, ...replyArgs) => {
+                if (err) {
+                    // 如果超时或发生错误，直接 reject
+                    if (err.code === 'ETIMEOUT') {
+                        console.error(`Timeout for ipc message ${message}`);
+                    }
+                    return reject(err);
+                }
+                // 成功则 resolve 主进程返回的数据
+                resolve(replyArgs);
+            });
+        });
+    }
+
 }
 
 export default new CocosIpcAdapter();

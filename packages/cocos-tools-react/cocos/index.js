@@ -29,7 +29,7 @@ const loadFileStat = function (event, data) {
     let item = data.item;
     let fsData = fs.statSync(item.path);
     item.size = fsData.size;
-    event.reply('cocos-tools-react:fs-stat', item);
+    event.reply(null, item);
 }
 
 
