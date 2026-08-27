@@ -1,5 +1,5 @@
 import { n as __toESM } from "./rolldown-runtime-BPOCksWG.js";
-import { n as require_react, t as require_jsx_runtime } from "./index-Bt4-H01s.js";
+import { n as require_react, t as require_jsx_runtime } from "./index-B7OSM0H9.js";
 import { t as EditorService_default } from "./EditorService-ptYj2fsN.js";
 import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-DfpbYn1L.js";
 import { t as require_path } from "./path-Ce5-mKfc.js";
@@ -38,33 +38,36 @@ function TextureStatistics() {
 		if (memorySize <= maxMemorySize) return "danger";
 		return "danger";
 	};
-	(0, import_react.useEffect)(async () => {
-		const res = await EditorService_default.queryAssetsByAssetTypeAsync("cc.Texture2D");
-		const textureInfo = await Promise.all(res.map(async (item) => {
-			const info = EditorService_default.queryInfoByUuidSync(item.uuid);
-			const meta = EditorService_default.queryMetaByUuidSync(item.uuid);
-			const [resItem] = await CocosIpcAdapter_default.sendToMainASync("cocos-tools-react:fs-stat", { item });
-			item.size = resItem.size;
-			const memorySize = meta.width * meta.height * 4;
-			return {
-				...info,
-				...meta,
-				...item,
-				memorySize
-			};
-		}));
-		let totalSize = 0;
-		let totalMemorySize = 0;
-		textureInfo.forEach((item) => {
-			totalSize += item.size;
-			totalMemorySize += item.memorySize;
-		});
-		setTotalSize(totalSize);
-		setTotalMemorySize(totalMemorySize);
-		setTextureList(textureInfo);
-		const maxMem = Math.max(...textureInfo.map((item) => item.memorySize), 1048576);
-		setMaxMemorySize(maxMem);
-		setDisplayList(textureInfo);
+	(0, import_react.useEffect)(() => {
+		const initTextures = async () => {
+			const res = await EditorService_default.queryAssetsByAssetTypeAsync("cc.Texture2D");
+			const textureInfo = await Promise.all(res.map(async (item) => {
+				const info = EditorService_default.queryInfoByUuidSync(item.uuid);
+				const meta = EditorService_default.queryMetaByUuidSync(item.uuid);
+				const [resItem] = await CocosIpcAdapter_default.sendToMainASync("cocos-tools-react:fs-stat", { item });
+				item.size = resItem.size;
+				const memorySize = meta.width * meta.height * 4;
+				return {
+					...info,
+					...meta,
+					...item,
+					memorySize
+				};
+			}));
+			let totalSize = 0;
+			let totalMemorySize = 0;
+			textureInfo.forEach((item) => {
+				totalSize += item.size;
+				totalMemorySize += item.memorySize;
+			});
+			setTotalSize(totalSize);
+			setTotalMemorySize(totalMemorySize);
+			setTextureList(textureInfo);
+			const maxMem = Math.max(...textureInfo.map((item) => item.memorySize), 1048576);
+			setMaxMemorySize(maxMem);
+			setDisplayList(textureInfo);
+		};
+		initTextures();
 	}, []);
 	const sortedTextureList = () => {
 		return [...textureList].sort((a, b) => {
