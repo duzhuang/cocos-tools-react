@@ -1,4 +1,4 @@
-const ipcAdapter = require('../src/infrastructure/ipc/ElectronIpcAdapter');
+const ipcAdapter = require("./ElectronIpcAdapter");
 const build_wanba_package = require('./build_wanba_package');
 const adb_push_game = require('./adb/adb_push_game');
 const {logger} = require("./cocos_editor_adapter");

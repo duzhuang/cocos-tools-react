@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./WanBaBuild-Ws0iBiXE.js","./rolldown-runtime-BPOCksWG.js","./EditorService-ptYj2fsN.js","./CocosIpcAdapter-DfpbYn1L.js","./AdbPush-MIYyiGjZ.js","./ResourceStatistics-BrmBCq4E.js","./path-Ce5-mKfc.js","./TextureStatistics-HgEoxZB7.js","./TextureStatistics-7Flj4Byn.css"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./WanBaBuild-Bf1wyOSV.js","./rolldown-runtime-BPOCksWG.js","./EditorService-ptYj2fsN.js","./CocosIpcAdapter-DfpbYn1L.js","./AdbPush-Ckotnvmf.js","./ResourceStatistics-BCG3nYSg.js","./path-Ce5-mKfc.js","./TextureStatistics-BeWaWPBg.js","./TextureStatistics-7Flj4Byn.css"])))=>i.map(i=>d[i]);
 import { n as __toESM, t as __commonJSMin } from "./rolldown-runtime-BPOCksWG.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
@@ -10530,7 +10530,7 @@ var toolRegistry = [
 		description: "扫描资源，生成图集打包配置文件。",
 		icon: LayersIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./AtlasPack-C7kqaspG.js"), [], import.meta.url)
+		load: () => __vitePreload(() => import("./AtlasPack-BRDpAOaN.js"), [], import.meta.url)
 	},
 	{
 		id: "bundle-audit",
@@ -10538,7 +10538,7 @@ var toolRegistry = [
 		description: "分析 Asset Bundle 依赖与体积",
 		icon: BoxIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./BundleAudit-D2nvBMqS.js"), [], import.meta.url)
+		load: () => __vitePreload(() => import("./BundleAudit-BLUclkFj.js"), [], import.meta.url)
 	},
 	{
 		id: "wanbaBuild",
@@ -10546,7 +10546,7 @@ var toolRegistry = [
 		description: "构建项目，生成玩吧游戏资源包。",
 		icon: PackageIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./WanBaBuild-Ws0iBiXE.js"), __vite__mapDeps([0,1,2,3]), import.meta.url)
+		load: () => __vitePreload(() => import("./WanBaBuild-Bf1wyOSV.js"), __vite__mapDeps([0,1,2,3]), import.meta.url)
 	},
 	{
 		id: "adbPush",
@@ -10554,7 +10554,7 @@ var toolRegistry = [
 		description: "将文件上传到 Android 设备。",
 		icon: AdbPhoneIcon,
 		group: "构建",
-		load: () => __vitePreload(() => import("./AdbPush-MIYyiGjZ.js"), __vite__mapDeps([4,1,2,3]), import.meta.url)
+		load: () => __vitePreload(() => import("./AdbPush-Ckotnvmf.js"), __vite__mapDeps([4,1,2,3]), import.meta.url)
 	},
 	{
 		id: "资源统计",
@@ -10562,7 +10562,7 @@ var toolRegistry = [
 		description: "统计项目资源。",
 		icon: ImageIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./ResourceStatistics-BrmBCq4E.js"), __vite__mapDeps([5,1,2,6]), import.meta.url)
+		load: () => __vitePreload(() => import("./ResourceStatistics-BCG3nYSg.js"), __vite__mapDeps([5,1,2,6]), import.meta.url)
 	},
 	{
 		id: "纹理统计",
@@ -10570,7 +10570,7 @@ var toolRegistry = [
 		description: "统计项目纹理。",
 		icon: ImageIcon,
 		group: "资源处理",
-		load: () => __vitePreload(() => import("./TextureStatistics-HgEoxZB7.js"), __vite__mapDeps([7,1,2,3,6,8]), import.meta.url)
+		load: () => __vitePreload(() => import("./TextureStatistics-BeWaWPBg.js"), __vite__mapDeps([7,1,2,3,6,8]), import.meta.url)
 	}
 ];
 //#endregion

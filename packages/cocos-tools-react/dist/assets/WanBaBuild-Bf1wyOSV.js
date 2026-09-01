@@ -1,5 +1,5 @@
 import { n as __toESM } from "./rolldown-runtime-BPOCksWG.js";
-import { n as require_react, t as require_jsx_runtime } from "./index-B7OSM0H9.js";
+import { n as require_react, t as require_jsx_runtime } from "./index-JaBF8xtF.js";
 import { t as EditorService_default } from "./EditorService-ptYj2fsN.js";
 import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-DfpbYn1L.js";
 //#region src/tools/WanBaBuild.jsx

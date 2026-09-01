@@ -1,5 +1,5 @@
 import { n as __toESM } from "./rolldown-runtime-BPOCksWG.js";
-import { n as require_react, t as require_jsx_runtime } from "./index-B7OSM0H9.js";
+import { n as require_react, t as require_jsx_runtime } from "./index-JaBF8xtF.js";
 import { t as EditorService_default } from "./EditorService-ptYj2fsN.js";
 import { t as CocosIpcAdapter_default } from "./CocosIpcAdapter-DfpbYn1L.js";
 import { t as require_path } from "./path-Ce5-mKfc.js";
@@ -163,7 +163,9 @@ function TextureStatistics() {
 						className: "btn primary",
 						onClick: () => {
 							console.log("按尺寸排序");
-							setTextureList(sortedTextureList());
+							console.log("原始数组:", textureList);
+							console.log("排序后的数组:", sortedTextureList());
+							setDisplayList(sortedTextureList());
 						},
 						children: "按尺寸排序"
 					}),
@@ -171,7 +173,8 @@ function TextureStatistics() {
 						className: "btn primary",
 						onClick: () => {
 							console.log("按内存排序");
-							setTextureList(sortedTextureListByMemory());
+							console.log(sortedTextureListByMemory());
+							setDisplayList(sortedTextureListByMemory());
 						},
 						children: "按内存排序"
 					})

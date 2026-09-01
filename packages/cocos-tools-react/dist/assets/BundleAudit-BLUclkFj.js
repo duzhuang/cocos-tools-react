@@ -1,4 +1,4 @@
-import { t as require_jsx_runtime } from "./index-B7OSM0H9.js";
+import { t as require_jsx_runtime } from "./index-JaBF8xtF.js";
 //#region src/tools/BundleAudit.jsx
 var import_jsx_runtime = require_jsx_runtime();
 function BundleAudit() {
